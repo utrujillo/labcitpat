@@ -1,0 +1,236 @@
+/* -	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	- */
+/* -	-	-	-	-	-	Uziel Trujillo Colón	-	-	-	-	-	-	-	-	-	- */
+/* -	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	- */
+/*Reseteo de etiquetas para correcta visualización*/
+body, ul, ol, li, p, h1,h2, h3, h4, h5, h6, form, blockquote, dl, dd, dt{
+margin:0;
+padding:0;
+}
+#frontpage header{
+	height:425px;
+}
+body{
+	color:#7a7a7a;
+	background:#fff url(../img/bckBody.jpg) repeat-x;
+	font: normal 13px Arial, Helvetice, Verdana, sans-serif;
+	line-height:1.7em;
+}
+
+h1,h2,h3,h4,h5,h6{
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight:normal;
+	padding-bottom:5px;
+	}
+	
+	h1{font-size:22px; clear:both;}
+	h2{font-size:20px; clear:both;}
+	h3{font-size:18px; clear:both;}
+	h4{font-size:16px; clear:both;}
+	h5{font-size:14px; clear:both;}
+	h6{font-size:13px; clear:both;}
+
+.limpiar{
+	clear:both;
+}
+#contenedorPrincipal{
+	width:940px;
+	margin:0 auto;
+	position:relative;
+	/*border:1px #000 solid;*/
+	}
+
+#contenedorCuerpo{
+	position:relative;
+	padding:0 20px;
+}
+
+/* -	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	- */
+/* -	-	-	-	-	-	Encabezado de la pagina	-	-	-	-	-	-	-	-	-	- */
+/* -	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	- */
+header{
+	height:205px;
+	position:relative;
+	z-index:1;
+	/*border:1px #000 solid;*/
+}
+
+#logoPrincipal{
+	position:relative;
+	height:127px;
+	width:313px;
+	left:25px;
+	padding:0;
+	}
+#logoPrincipal a{
+	display:block;
+	height:127px;
+	width:313px;
+	text-indent:-9999px;
+	position:absolute;
+	outline:none;
+	background:transparent url(../img/labcipatLogo.png) no-repeat;
+	}
+	/* -	-	-	-	-	-	-	-	-	Menu de Navegación	-	-	-	-	-	-	-	- */
+	#contenedorPrincipal  nav{
+		/*float:left;*/
+		position:absolute;
+		top:107px;
+		right:20px;
+		border:1px #fff solid;
+	}
+	
+	nav ul{
+		list-style-type:none;
+		list-style-position:outside;
+		line-height:36px;
+	}
+	
+	nav li{
+		display: inline;
+	}
+	 nav li a{
+		border-top: 1px #e4e4e4 dashed;
+		border-bottom: 1px #e4e4e4 dashed;
+		margin:0 10px;
+		padding:5px 3px;
+		/*padding:0 15px 3px 15px;*/
+		text-decoration:none;
+		text-align:center;
+		color:#7a7a7a;
+	}
+	
+	nav li a:hover{
+		border-top: 1px #7a7a7a dashed;
+		border-bottom: 1px #7a7a7a dashed;
+		background: #f4f4f4;
+	}
+	/*	-	-	-	-	-	-	-	-	Transciciones	-	-	-	-	-	-	-	-	-	-	*/
+	#contenedorTransicion{
+		margin:20px 0 0 0;
+		position:relative;
+		width:940px;
+		height:275px;
+		background:transparent url(../img/bckFrontpage.png) no-repeat;
+	}
+	#transicion{
+		height:240px;
+		left:19px;
+		overflow:hidden;
+		position:absolute;
+		top:16px;
+		width:900px;
+	}
+/* -	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	- */
+/* -	-	-	-	-	-	Cuerpo de la Página	-	-	-	-	-	-	-	-	-	-	- */
+/* -	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	- */
+
+.caja{
+	float:left;
+	margin-right:30px;
+	overflow:hidden;
+	padding-bottom:5px;
+	position:relative;
+	width:280px;
+	}
+.caja h2{
+	padding-bottom:10px;
+	font-size:18px;
+	}
+.cajaImage{
+	width:100%;
+	height:60px;
+	overflow:hidden;
+	margin-bottom:10px;
+	}
+	.caja p{
+		text-align: justify;
+	}
+.caja3{
+	margin-right:0px;
+}
+	#navegador{
+	padding-bottom:20px;
+	}
+
+	#navegador ul{
+		width:250px;
+		list-style-type:none;
+		list-style-position:outside;
+		}
+		
+	#navegador li{
+		width:100%;
+		}
+		
+	#navegador li a{
+		text-decoration:none;
+		display:block;
+		width:225px;
+		padding:5px 5px 5px 30px;
+		border-bottom:1px solid #c4c4c4;
+		background:#fff url(../img/bg_subnav.png) 9px 11px no-repeat;
+		color: #6a6a6a;
+		}
+	
+	#navegador li a:hover{
+		background:#f4f4f4 url(../images/bg_subnav.png) 9px -79px no-repeat;
+		color: #000;
+	}
+	
+	.barraLateral{
+		float:left;
+		margin-right:70px;
+		overflow:hidden;
+		padding-bottom:5px;
+		position:relative;
+		width:260px;
+	}
+	
+	article{
+		float:left;
+		position:relative;
+		width:570px;
+		overflow:hidden;
+	}
+	
+	.articuloContenido{
+		width:100%;
+		float:left;
+		clear:both;
+		padding-bottom:30px;
+		position:relative;
+	}
+	
+	.alignleft{
+		float:left;
+		margin:0px 10px 10px 0pt;
+		overflow:hidden;
+		max-width:588px;
+	}
+	.alignright{
+		float:right;
+		margin:0px 0pt 10px 10px;
+		overflow:hidden;
+		max-width:588px;
+	}
+	.aligncenter{
+		clear:both;
+		display:block;
+		margin:0pt auto 1.5em;
+		overflow:hidden;
+		max-width:588px;
+	}
+
+
+/* -	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	- */
+/* -	-	-	-	-	-	Pie de Página	-	-	-	-	-	-	-	-	-	-	-	- */
+/* -	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	- */
+footer{
+	margin:20px 0 0 0;
+	padding:2px 0 20px 0;
+	width:100%;
+	text-align:center;
+	font-size:11px;
+	border-top:1px solid #c4c4c4;
+	/*float:left;*/
+	}
