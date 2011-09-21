@@ -4,29 +4,37 @@
 <title>Laboratorio de Citologia y Patologia S.A de C.V</title>
 <link href="css/styleIni.css" rel="stylesheet" type="text/css" />
 </head>
+<script type='text/javascript' src="js/jquery-1.6.2.min.js"></script>
+<script type='text/javascript' src="js/jquery.transition.js"></script>
+<script type='text/javascript' src="js/jquery.boxShow.js"></script>
+<script>
+$(function(){
+	$("#box").boxShow();
+});
+$(window).load(function(){ // starts executing after all images have loaded to ensure best performance
+	$("#transicion").transitionTool({
+		block_size	: 80,
+		duration	: 1000,
+		display_for	: 10000
+	}); //dont set lower then 6000 or it will produce errors
+});
+</script>
 
 <body id="frontpage">
 <section id="contenedorPrincipal">
 	<header>
-    	<h1 id='logoPrincipal'><a href="#">Laboratorio</a></h1>
+    	<h1 id='logoPrincipal'><a>Laboratorio</a></h1>
         <nav>
         	<?php include_once("scripts/menuPrincipal.php"); ?>
         </nav>
         
-        <div id="contenedorTransicion">
-            <div id="transicion">
-                 <p><img src="portrait/1.png" /><img src="portrait/2.png" /><img src="portrait/3.png" /><img src="portrait/4.png" /></p>
-            </div>
-        </div>
+         <?php include_once("scripts/transicion.php"); ?>
+         
     </header>
     <!--			Termino de la parte superior de la pagina				-->
     <div id="contenedorCuerpo">
     	<div class="barraLateral">
-          <ul id="navegador">
-          	<li><a href="#" title="Historia">Historia</a></li>
-        	<li><a href="#" title="Nuestra Compa&ntilde;ia">Nuestra Compa&ntilde;ia</a></li>
-            <li><a href="#" title="Nuestro Equipo">Nuestro Equipo</a></li>
-          </ul>  
+          <?php include_once("scripts/subMenu.php"); ?>
         </div><!-- fin sideBar -->
         <article>
         	<div class="articuloContenido">
@@ -44,5 +52,7 @@
         correo-electronico: marior8a@hotmail.com
     </footer>
 </section>
+
+<?php include_once("scripts/boxLogin.php"); ?>
 </body>
 </html>
