@@ -279,6 +279,11 @@ $(function(){
             <td>&nbsp;</td>
           </tr>
           <tr>
+            <td class="der bold">Observaciones:&nbsp;</td>
+            <td colspan="2"><textarea class="txtArea" name="observaciones" id="observaciones" style="width:100%; height:100px;"></textarea></td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>

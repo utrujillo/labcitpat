@@ -17,7 +17,7 @@ class Login{
 		//$Conexion = new Conexion("intellim_userlab");
 		
 		$Passwd = md5($Passwd);
-		$Sql = "select level,nameDb,passwd,usuario from clienteTbl 
+		$Sql = "select idCliente,level,nameDb,passwd,usuario from clienteTbl 
 					inner join laboratorioTbl on fk_idLaboratorio = idLaboratorio 
 					where usuario = '$User' and status = 1 ";
 					//echo $Sql;
@@ -26,6 +26,7 @@ class Login{
 		$Lvl = $Row["level"];
 		$IdUser = $Row["idCliente"];
 		$SelDb	= $Row["nameDb"];
+		//echo $IdUser;
 		
 			if($User == $Row["usuario"] && $Passwd == $Row["passwd"]){			
 				//--------------------- Asigno Variables de session -----------------------------
