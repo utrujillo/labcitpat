@@ -17,6 +17,9 @@ $access = new Access("R,S");
 #frontpage header{
 	height:205px;
 }
+input{
+	display: inline;
+}
 </style>
 </head>
 <script type='text/javascript' src="js/jquery-1.6.2.min.js"></script>
@@ -63,7 +66,13 @@ $(function(){
         </nav>        
     </header>
 
-	<section id="contenedorCuerpo" class="frmSmall">
+	<section id="contenedorCuerpo">
+
+	<form method="post" accept-charset="utf-8">	
+		<input type="text" name="srcName" required class="inpuTextCnt" value="" placeholder="Nombre Apellido" ><input type="submit" class="submitBtn midBtn search" value="" />
+	</form>
+	
+	
 			<table width="100%" id="toPaginate" class="table">
 			<caption>Registro de Pacientes</caption>
 			<thead>
@@ -77,25 +86,33 @@ $(function(){
 			</thead>	
 			<tbody> 
             <?php
-				$sqlFind = "select idRegistro,claveFolio,fechaRecepcion,
+            	if($_POST["srcName"]){
+					$sqlFind = "select idRegistro,claveFolio,fechaRecepcion,
 									concat(nombre,' ',apellidoPaterno,' ',apellidoMaterno) as nombrePaciente
 									,estudioSolicitado 
-									from registrotbl";
+									from registrotbl where concat(nombre,' ',apellidoPaterno,' ',apellidoMaterno) like '%". $_POST["srcName"] ."%'";
+				}else{
+					$sqlFind = "select idRegistro,claveFolio,fechaRecepcion,
+									concat(nombre,' ',apellidoPaterno,' ',apellidoMaterno) as nombrePaciente
+									,estudioSolicitado 
+									from registrotbl order by idRegistro desc limit 10";
+				}
+
 				$dataFind = $conexion->consulta($sqlFind);
 				
 				$even = 0;
 				while($rowFind = $dataFind->fetch_array(MYSQLI_ASSOC)){
 					
-					$viewData		= '<img src="img/viewData.gif" class="viewData imgPad" style="cursor:pointer" id="'. $rowFind["idRegistro"] .'" ';
+					$viewData		= '<img src="img/icons/doc_new_icon&16.png" class="viewData imgPad" style="cursor:pointer" id="'. $rowFind["idRegistro"] .'" ';
 					$viewData		.= ' alt="ver datos del Registro" title="ver datos del Registro" />';
 					
-					$updateData		= '<img src="img/updateData.png" class="updateData imgPad" style="cursor:pointer" id="'. $rowFind["idRegistro"] .'" ';
+					$updateData		= '<img src="img/icons/refresh_icon&16.png" class="updateData imgPad" style="cursor:pointer" id="'. $rowFind["idRegistro"] .'" ';
 					$updateData		.= ' alt="Actualizar Datos del Registro" title="Actualizar Datos del Registro" />';
 					
-					$showGallery = '<img src="img/pictureSave.png" class="galleryImage imgPad" style="cursor:pointer" id="'. $rowFind["idRegistro"] .'"';
+					$showGallery = '<img src="img/icons/save_icon&16.png" class="galleryImage imgPad" style="cursor:pointer" id="'. $rowFind["idRegistro"] .'"';
 					$showGallery .= ' alt="Ver Galeria de Imagenes" title="Ver Galeria de Imagenes" />';
 					
-					$uploadDocument = '<img src="img/document.png" class="uploadDocument imgPad" style="cursor:pointer" id="'. $rowFind["idRegistro"].'|'.$rowFind["estudioSolicitado"] .'" ';
+					$uploadDocument = '<img src="img/icons/spechbubble_sq_line_icon&16.png" class="uploadDocument imgPad" style="cursor:pointer" id="'. $rowFind["idRegistro"].'|'.$rowFind["estudioSolicitado"] .'" ';
 					$uploadDocument .= ' alt="Ingresar Resultados" title="Ingresar Resultados" />';
 					
 					if($even%2 == 0){
@@ -125,12 +142,13 @@ $(function(){
 				}
 			?>
 			</tbody>
-<tfoot>
+			<tfoot>
 				<tr>
-					<td colspan="5">Pacientes Totales&nbsp;&nbsp;<?php echo $even++; ?></td>
+					<td colspan="5"><?php if($_POST["srcName"]){ echo "Encontrados&nbsp;&nbsp;".$even++; }else{ echo "Ultimos 10 registros"; } ?></td>
 				</tr>
 			</tfoot>
             </table>
+    
 </section><!-- contenedorCuerpo -->
   
     <footer>

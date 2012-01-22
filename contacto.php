@@ -4,23 +4,21 @@
 <title>Laboratorio de Citologia y Patologia S.A de C.V</title>
 <link href="css/styleIni.css" rel="stylesheet" type="text/css" />
 <link href="css/googleButtons.css" rel="stylesheet" type="text/css" />
+<link href="css/default/default.css" rel="stylesheet" type="text/css" />
+<link href="css/nivo-slider.css" rel="stylesheet" type="text/css" />
 </head>
 <script type='text/javascript' src="js/jquery-1.6.2.min.js"></script>
-<script type='text/javascript' src="js/jquery.transition.js"></script>
 <script type='text/javascript' src="js/jquery.boxShow.js"></script>
 <script type='text/javascript' src="js/jquery.utcValidationForm.js"></script>
+<script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
 <script>
 $(function(){
-	$("#sendForm").utcValidationForm();
 	$("#box").boxShow();
+    $("form").utcValidationForm({ showTips: false });
 });
 
 $(window).load(function(){ 
-	$("#transicion").transitionTool({
-		block_size	: 80,
-		duration	: 1000,
-		display_for	: 10000
-	}); //Poner menos de 6000 en duracion puede ocasionar errores
+	$('#slider').nivoSlider();
 });
 </script>
 <body id="frontpage">
@@ -58,11 +56,11 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
         	  <table width="570" border="0" cellspacing="0" cellpadding="0">
         	    <tr height="50">
         	      <td class="bold der">Nombre Completo:&nbsp;</td>
-        	      <td><input name="textfield" type="text" class="inpuTextCnt required" id="nombreCompleto" size="50"></td>
+        	      <td><input name="textfield" type="text" class="inpuTextCnt required" id="nombreCompleto" placeholder="Nombre Completo" size="50"></td>
       	      </tr>
         	    <tr height="50">
         	      <td class="bold der">Correo Electronico:&nbsp;</td>
-        	      <td><input name="eMail" type="text" class="inpuTextCnt required regExp" id="eMail" size="50"></td>
+        	      <td><input name="eMail" type="text" class="inpuTextCnt required regExp" id="eMail" placeholder="ej. juan.perez@hotmail.com" size="50"></td>
       	      </tr>
         	    <tr height="50">
         	      <td class="bold der" valign="top">Mensaje:&nbsp;</td>

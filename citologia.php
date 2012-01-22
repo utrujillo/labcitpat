@@ -38,12 +38,12 @@ $(function(){
 	$("#addConcept").click(function(){
 		if(concepto.val() != 0){
 			var hdInput = '<input name="'+ concepto.val() +'" id="'+ concepto.val() +'" type="hidden" value="'+ concepto.val() +'">';
-			var nameCal = 'calif'+ concepto.val();
+			var nameCal = concepto.val();
 			var input 	= '<input name="'+ nameCal +'" type="text" class="inpuTextCnt">';
 			
 			cuerpo.append('<tr class="'+ concepto.val() +'">');
-			cuerpo.append('<td class="'+ concepto.val() +' cen"><img src="img/del.gif" class="'+ concepto.val() +'" /></td>');
-			cuerpo.append('<td class="'+ concepto.val() +' cen">'+ hdInput +''+ concepto.val() +'</td>');
+			cuerpo.append('<td class="'+ concepto.val() +' cen"><img src="img/icons/delete_icon&24.png" class="'+ concepto.val() +'" /></td>');
+			cuerpo.append('<td class="'+ concepto.val() +' cen">'+ hdInput +''+ $("option:selected").html() +'</td>');
 			cuerpo.append('<td class="'+ concepto.val() +'">'+ input +'</td>');
 			cuerpo.append('</tr>');
 		}	
@@ -90,24 +90,33 @@ $(function(){
                 	<tr>
                     	<th scope="col" width="10%">
                         <th scope="col" width="70%">
+                        
                         <select name="selConcepto" id="selConcepto" class="inpuTextCnt">
                             <option value="0">- Seleccionar -</option>
-                            <option value="c1">Concepto 1</option>
-                            <option value="c2">Concepto 2</option>
-							<option value="c3">Concepto 3</option>
+                            <?php
+                            	$sqlConcept = "SELECT * FROM catalogoconceptostbl";
+                            	$dataConcept = $conexion->consulta($sqlConcept);
+                            	while($rowConcept = $dataConcept->fetch_array(MYSQLI_ASSOC)):                            		
+                            ?>
+                            
+                            <option value="<?php echo $rowConcept['idConcepto'] ?>"> <?php echo $rowConcept["concepto"]; ?></option>
+							
+							<?php endwhile; ?>
                         </select>
-                        </th>
+                        
+                    	</th>
                         <th scope="col" width="20%"><input type="button" class="submitBtn" id="addConcept" value="Agregar" /></th>
                     </tr>
                 </thead>
                 <tbody class="toAdd frmSmall">
                 	<?php
 						if($mod){
-							$sqlFindConcept = "select * from conceptotbl where fk_idCitologia = ". $rowSrc["idCitologia"];
+							$sqlFindConcept = "select t1.idConcepto, t2.concepto, t1.calificacion from conceptotbl as t1 inner join catalogoconceptostbl as t2 on t1.concepto = t2.idConcepto 
+												where fk_idCitologia = ". $rowSrc["idCitologia"];
 							$dataConcept = $conexion->consulta($sqlFindConcept);
 							while($rowConcept = $dataConcept->fetch_array(MYSQLI_ASSOC)){
 								
-								$input =  '<input name="calif_'. $rowConcept["idConcepto"] .'" type="text" class="inpuTextCnt" value="'. $rowConcept["calificacion"] .'">';
+								$input =  '<input name="'. $rowConcept["idConcepto"] .'" type="text" class="inpuTextCnt" value="'. $rowConcept["calificacion"] .'">';
 								echo '<tr>';
 									echo '<td></td>';
 									echo '<td class="cen">'. $rowConcept["concepto"] .'</td>';

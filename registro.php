@@ -37,7 +37,7 @@ $conexion = new Conexion($db);
 <script>
 $(function(){
 	
-	$("#sendForm").utcValidationForm();
+	$("form").utcValidationForm({ showTips: false });
 	
 	$( "#fechaRecepcion" ).datepicker({
 			monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
@@ -114,7 +114,7 @@ $(function(){
 	}
 	
 	/*function limpiar(){
-	 ctx.fillStyle = "white";
+	 ctx.fillStyle = "white"ctx;
 	 ctx.fillRect(0, 0, 500, 500);
 	}*/
 });
@@ -280,8 +280,7 @@ $(function(){
           </tr>
           <tr>
             <td class="der bold">Observaciones:&nbsp;</td>
-            <td colspan="2"><textarea class="txtArea" name="observaciones" id="observaciones" style="width:100%; height:100px;"></textarea></td>
-            <td>&nbsp;</td>
+            <td colspan="3"><textarea class="txtArea" name="observaciones" id="observaciones" style="width:92%; height:100px;"></textarea></td>
           </tr>
           <tr>
             <td>&nbsp;</td>

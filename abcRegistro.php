@@ -55,7 +55,6 @@ $access = new Access("R,S");
 			
 			//$sql = "insert into registroTbl <br />(". $campos .") <br />values (". $valueCampos .")";
 			
-			$_SESSION["id_user"];
 			if($mov == "a")
 				$sql = "insert into registrotbl (". $campos .",idUser) values (". $valueCampos .",". $_SESSION["id_user"] .")";
 			

@@ -3,20 +3,20 @@
 <head>
 <title>Laboratorio de Citologia y Patologia S.A de C.V</title>
 <link href="css/styleIni.css" rel="stylesheet" type="text/css" />
+<link href="css/default/default.css" rel="stylesheet" type="text/css" />
+<link href="css/nivo-slider.css" rel="stylesheet" type="text/css" />
 </head>
 <script type='text/javascript' src="js/jquery-1.6.2.min.js"></script>
-<script type='text/javascript' src="js/jquery.transition.js"></script>
 <script type='text/javascript' src="js/jquery.boxShow.js"></script>
+<script type='text/javascript' src="js/jquery.utcValidationForm.js"></script>
+<script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
 <script>
 $(function(){
 	$("#box").boxShow();
+    $("form").utcValidationForm({ showTips: false });
 });
 $(window).load(function(){ // starts executing after all images have loaded to ensure best performance
-	$("#transicion").transitionTool({
-		block_size	: 80,
-		duration	: 1000,
-		display_for	: 10000
-	}); //dont set lower then 6000 or it will produce errors
+	$('#slider').nivoSlider();
 });
 </script>
 

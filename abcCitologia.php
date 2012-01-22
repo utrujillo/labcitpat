@@ -7,9 +7,7 @@ $access = new Access("R,S");
 	
 	$arrConcepto 	= array();
 	$arrValor		= array();
-	$arrIndex		= array();
 	$cC 			= 0;
-	$cV				= 0;
 
 	$skipFields = array("hdMod","idCitologia","selConcepto");
 	$renameFields = array("fk_idRegistro" => "hdReg");		
@@ -25,20 +23,14 @@ $access = new Access("R,S");
 
 	foreach($_POST as $nameCampo => $value){
 		if($mov == "a"){
-			if(strlen($nameCampo) == 2){ $arrConcepto[$cC] = strtoupper($nameCampo); $cC++; }
-			if(strlen($nameCampo) == 7){ $arrValor[$cV] = strtoupper($value); $cV++; }
+			if(strlen($nameCampo) <= 2){ $arrConcepto[$cC] = strtoupper($nameCampo); $arrValor[$cC] = strtoupper($value); $cC++; }
 		}
 		
 		if($mov == "c"){
-			if(substr($nameCampo,0,6) == "calif_"){
-				list($name,$idConcepto) = explode("_",$nameCampo);
-				$arrIndex[$cV] = $idConcepto;
-				$arrValor[$cV] = $value;
-				$cV++;
-			}
+			if(strlen($nameCampo) <= 2){ $arrConcepto[$cC] = strtoupper($nameCampo); $arrValor[$cC] = strtoupper($value); $cC++; }
 		}
 		
-		if((strlen($nameCampo) != 2) && (strlen($nameCampo) != 7)){
+		if( strlen($nameCampo) > 2 ){
 			//echo $nameCampo ." => ". $value."<br />";
 			if(!in_array($nameCampo,$skipFields)){
 					if(!in_array($nameCampo,$renameFields)){
@@ -70,6 +62,8 @@ $access = new Access("R,S");
 				}//fin skipFields
 		}//fin nameCampo != 2 && nameCampo != 7
 	}//foreach nameCampos => value
+
+	//echo sizeof($arrConcepto);
 	
 			$campos = substr($campos,0,strlen($campos)-1);
 			$valueCampos = substr($valueCampos,0,strlen($valueCampos)-1);
@@ -83,7 +77,7 @@ $access = new Access("R,S");
 				
 				for($i = 0; $i < sizeof($arrConcepto); $i++){
 				$sqlConcept = "insert into conceptotbl (fk_idCitologia,concepto,calificacion) values ($lastId,'$arrConcepto[$i]','$arrValor[$i]')";
-					//echo $sqlConcept."<br />";
+					echo $sqlConcept."<br />";
 					if(!$conexion->consulta($sqlConcept))
 						echo "Ocurrio un error al de ejecutar la consulta ". mysqli_error($conexion->getLink());
 				}
@@ -94,11 +88,12 @@ $access = new Access("R,S");
 			
 			if($mov == "c"){
 				$sql = "update citologiatbl set ". $cadena ." where idCitologia =". $idCitologia;
+				//echo $sql."<br />";
 				if(!$conexion->consulta($sql))
 					echo "Ocurrio un error al de ejecutar la consulta ". mysqli_error($conexion->getLink());
 				
-				for($i = 0; $i < sizeof($arrIndex); $i++){
-				$sqlConcept = "update conceptotbl set calificacion = '$arrValor[$i]' where idConcepto = ".$arrIndex[$i];
+				for($i = 0; $i < sizeof($arrConcepto); $i++){
+				$sqlConcept = "update conceptotbl set calificacion = '$arrValor[$i]' where idConcepto = ".$arrConcepto[$i];
 					//echo $sqlConcept."<br />";
 					if(!$conexion->consulta($sqlConcept))
 						echo "Ocurrio un error al de ejecutar la consulta ". mysqli_error($conexion->getLink());
@@ -140,9 +135,7 @@ div{
 <body>
 <div id="message">
 	<div>
-		<?php
-			echo $msn;
-    	?>
+		<?php echo $msn; ?>
         <br />
         <a onclick="window.close()" href="#">[ Cerrar Ventana ] </a>
     </div>

@@ -29,7 +29,6 @@ h1,h2,h3,h4,h5,h6{
 	h5{font-size:14px; clear:both;}
 	h6{font-size:13px; clear:both;}
 
-
 #contenedorPrincipal{
 	width:940px;
 	margin:0 auto;
@@ -82,25 +81,23 @@ header{
 		line-height:36px;
 	}
 	
-	nav li{
-		display: inline;
+	nav li{ display: inline; list-style: none; 	}
+	nav li a{ font-size: 1em; padding: 3px 0 3px 25px; text-decoration: none; color: #000; }	
+	nav li a:hover{ 
+		border-top: 1px #a2a2a2 dashed; border-bottom: 1px #7a7a7a dashed; 
+		text-shadow:  rgba(64, 64, 64, 0.5)  1px 1px 1px;
 	}
-	 nav li a{
-		border-top: 1px #e4e4e4 dashed;
-		border-bottom: 1px #e4e4e4 dashed;
-		margin:0 10px;
-		padding:5px 3px;
-		/*padding:0 15px 3px 15px;*/
-		text-decoration:none;
-		text-align:center;
-		color:#7a7a7a;
-	}
-	
-	nav li a:hover{
-		border-top: 1px #7a7a7a dashed;
-		border-bottom: 1px #7a7a7a dashed;
-		background: #f4f4f4;
-	}
+	/*	-	-	-	-	-	-	-	-	Instranet	-	-	-	-	-	-	-	-	-	-	*/	
+	nav li.about{ background: url(../img/icons/share_icon&16.png) no-repeat 5px 0px; }	
+	nav li.contact{ background: url(../img/icons/mail_icon&16.png) no-repeat 5px -1px; }
+	nav li.client{ background: url(../img/icons/user_icon&16.png) no-repeat 5px 0px; }
+
+	/*	-	-	-	-	-	-	-	-	Instranet	-	-	-	-	-	-	-	-	-	-	*/	
+	nav li.home{ background: url(../img/icons/home_icon&16.png) no-repeat 5px -1px; }
+	nav li.registry{ background: url(../img/icons/doc_lines_icon&16.png) no-repeat 5px -1px; }
+	nav li.dataCenter{ background: url(../img/icons/cloud_icon&16.png) no-repeat 5px -1px; }
+	nav li.closeSession{ background: url(../img/icons/app_window_cross&16.png) no-repeat 5px -1px; }
+
 	/*	-	-	-	-	-	-	-	-	Transciciones	-	-	-	-	-	-	-	-	-	-	*/
 	#contenedorTransicion{
 		margin:20px 0 0 0;
@@ -265,6 +262,7 @@ header{
 .datoRequerido{
 	padding:10px;
 	border:1px #999 solid;
+	border-left: 4px #999 solid;
 	border-radius: 2px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px; 
@@ -326,6 +324,15 @@ header{
 .bigBtn{
 	font-size: 16px;
     padding: 10px 15px;
+}
+
+.midBtn{
+	padding: 10px 15px;
+}
+
+.search {
+    background: url(../img/icons/zoom_icon&24.png) 12px 7px no-repeat #f3f3f3;
+    padding-left: 30px;
 }
 
 .frmSmall .inpuTextCnt{
